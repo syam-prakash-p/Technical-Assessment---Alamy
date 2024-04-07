@@ -1,0 +1,22 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Sid": "PublishLayers",
+          "Effect": "Allow",
+          "Action": [
+              "lambda:PublishLayerVersion"
+          ],
+          "Resource": "arn:aws:lambda:*:*:layer:test-*"
+      },
+      {
+          "Sid": "ManageLayerVersions",
+          "Effect": "Allow",
+          "Action": [
+              "lambda:GetLayerVersion",
+              "lambda:DeleteLayerVersion"
+          ],
+          "Resource": "arn:aws:lambda:*:*:layer:test-*:*"
+      }
+  ]
+}
