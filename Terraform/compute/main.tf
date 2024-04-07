@@ -60,7 +60,6 @@ module "alb" {
     vpc_id = module.vpc.vpc_id
     certificate_arn = aws_iam_server_certificate.ssl-certificate.arn
     tags = local.tags
-    # target_group_arn = module.alb.target_group.arn
 
 }
 

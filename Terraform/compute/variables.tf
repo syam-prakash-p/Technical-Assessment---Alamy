@@ -1,12 +1,12 @@
-############## Domain ########################
 
 variable "domain" {
     type = string
+    description = "domain name, for storing the certificates in iam"
 }
-############### EC2 variables ##################
 
 variable "ec2" {
     type = map
+    description = "EC2 necessary variables"
       default = {
         instance_type = "t2.micro",
         ami = "ami-0b8b44ec9a8f90422"
@@ -16,9 +16,9 @@ variable "ec2" {
 
 
 
-################ security groups variables #####################
 variable "ingress_rules" {
     type = map
+    description = "security groups variables"
     default = {
         bastion_sg = ["ssh-tcp"],
         web_sg = ["http-80-tcp"],
@@ -28,16 +28,17 @@ variable "ingress_rules" {
 }
 
 
-############## variables declared for vpc ###############
 
 
 variable "vpc_cidr"{
     type = string
     default = "192.168.0.0/16"
+    description = "The vpc cidr"
 }
 
 variable "vpc_subnets"{
     type = map
+    description = "zones in which the subnets created"
     default = {
         private_subnets_zones = [],
         public_subnets_zones = []
@@ -46,10 +47,10 @@ variable "vpc_subnets"{
 
 variable "subnet_newbits"{
     type = number
+    description = "Variable as part of defining the subnet"
     default = 8
 }
 
-###################### asg ###############
 variable "asg" {
     type = object({
         availability = string
@@ -61,6 +62,7 @@ variable "asg" {
         launch_template_name = string
         key_name = string
     })
+    description = "This object contains the necessary variables for the auto scaling group"
     default = {
         availability = "public",
         name = "al-asg",
