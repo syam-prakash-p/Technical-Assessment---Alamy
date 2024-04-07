@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: mysql-db
+    type: backend
+  name: mysql-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-db
+  template:
+    metadata:
+      labels:
+        app: mysql-db
+    spec:
+      containers:
+      - image: mysql
+        name: mysql
+        ports:
+        - containerPort: 3306
+        envFrom:
+        - secretRef:
+            name: db-secret
+        volumeMounts:
+          - mountPath: "/var/lib/mysql"
+            name: pv-storage
+      volumes:
+      - name: pv-storage
+        persistentVolumeClaim:
+          claimName: db-pvc      
