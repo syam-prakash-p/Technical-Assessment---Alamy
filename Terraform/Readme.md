@@ -1,7 +1,6 @@
 Prerequisites
 ---------
-1. You need to create a service user for the terraform deployment
-    Export the bleow environment variables
+1. Export the bleow environment variables
     ```sh
     export AWS_ACCESS_KEY_ID="<your access key>"
     export AWS_SECRET_ACCESS_KEY="<your secret key>"
