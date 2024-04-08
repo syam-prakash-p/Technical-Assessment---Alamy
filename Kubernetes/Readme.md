@@ -13,6 +13,7 @@ Prerequisites
 - To install/update the application
   Database: ```kubectl apply -f Kubernetes/database/*.yml -n <namespace>```
   Wordpress: ```kubectl apply -f Kubernetes/wordpress/*.yml -n <namespace>```
+- You can access the application by the url : http://<your_node_ip>>:31000
 - To delete application
   use ```kubectl delete```  insted of ```kubectl apply``` in the above commands
 
