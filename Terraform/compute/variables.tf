@@ -69,7 +69,7 @@ variable "asg" {
         max_size = 2,
         min_size = 1,
         instance_type = "t2.micro",
-        ami = "ami-080e1f13689e07408"
+        ami = "ami-0b8b44ec9a8f90422"
         launch_template_name = "al-lt"
         key_name = "mykey"
     }
