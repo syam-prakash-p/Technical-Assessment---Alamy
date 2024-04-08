@@ -64,7 +64,7 @@ variable "asg" {
     })
     description = "This object contains the necessary variables for the auto scaling group"
     default = {
-        availability = "public",
+        availability = "private",
         name = "al-asg",
         max_size = 2,
         min_size = 1,

@@ -13,6 +13,9 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.7.0"
   manage_default_security_group = false
+  map_public_ip_on_launch = true
+  enable_nat_gateway = true
+  single_nat_gateway = true
   cidr = var.vpc_cidr
   azs = setunion(var.vpc_subnets.private_subnets_zones,var.vpc_subnets.public_subnets_zones)
   public_subnets = [ for zone in var.vpc_subnets.public_subnets_zones : cidrsubnet(var.vpc_cidr, var.subnet_newbits, index(var.vpc_subnets.public_subnets_zones,zone)+1)]
@@ -41,7 +44,6 @@ module "ec2-instance-bastion" {
   version = "5.6.1"
   ami = var.ec2.ami
   instance_type  = var.ec2.instance_type
-  associate_public_ip_address = true
   key_name = var.ec2.key_name
   subnet_id = module.vpc.public_subnets[0]
   vpc_security_group_ids = [module.security-group["bastion_sg"].security_group_id]
